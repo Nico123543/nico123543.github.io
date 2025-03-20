@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Syngenta</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="create-account.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="create-account.js"></script>
+</head>
+<body class="create-account-page">
+    <div class="container">
+        <div class="logo">
+            <img src="../icons/Biologicals_signature_BLK_RGB_229-11819.png" alt="Syngenta">
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-icon">
+                <img src="../icons/farmerprofile.png" alt="Farmer Profile">
+            </div>
+            <input type="text" class="profile-name" placeholder="Enter your name" value="Rajesh">
+            
+            <h2>Choose your plants</h2>
+            <div class="plant-grid">
+                <div class="plant-item" onclick="toggleSelection(this)">
+                    <img src="../icons/soya.png" alt="Soybean">
+                </div>
+                <div class="plant-item" onclick="toggleSelection(this)">
+                    <img src="../icons/cotton.png" alt="Cotton">
+                </div>
+                <div class="plant-item" onclick="toggleSelection(this)">
+                    <img src="../icons/corn.png" alt="Corn">
+                </div>
+                <div class="plant-item" onclick="toggleSelection(this)">
+                    <img src="../icons/wheat2.png" alt="Wheat">
+                </div>
+                <div class="plant-item" onclick="toggleSelection(this)">
+                    <img src="../icons/rice.png" alt="Rice">
+                </div>
+            </div>
+        </div>
+
+        <div class="location-section">
+            <div class="location-search">
+                <input type="text" class="location-name" placeholder="Search location">
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="address">
+                <img src="../icons/location.png" alt="Location">
+                <span class="location-text"></span>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="../alert/alert.html" class="finish-button">Finish</a>
+        </div>
+    </div>
+</body>
+</html> 

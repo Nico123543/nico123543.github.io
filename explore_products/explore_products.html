@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syngenta Biologicals - Products</title>
+    <link rel="stylesheet" href="explore_products.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <img src="../icons/Biologicals_signature_BLK_RGB_229-11819.png" alt="Syngenta">
+            </div>
+            <a href="../explore/explore.html" class="back-button">←</a>
+            <h1 id="cropTitle">Wheat</h1>
+        </header>
+
+        <div class="treatments">
+            <h2>Treatments</h2>
+            <div class="treatment-item">
+                <div class="treatment-controls">
+                    <span class="minus">-</span>
+                    <div class="treatment-middle">
+                        <span class="treatment-name">Stress Booster</span>
+                        <input type="range" min="1" max="5" value="1" step="1" class="slider" id="stressSlider">
+                    </div>
+                    <span class="plus">+</span>
+                </div>
+            </div>
+            <div class="treatment-item">
+                <div class="treatment-controls">
+                    <span class="minus">-</span>
+                    <div class="treatment-middle">
+                        <span class="treatment-name">Yield Booster</span>
+                        <input type="range" min="1" max="5" value="1" step="1" class="slider" id="yieldSlider">
+                    </div>
+                    <span class="plus">+</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="crop-display">
+            <div id="cropImage" class="crop-icon">
+                <!-- Crop images will be inserted here by JavaScript -->
+                <img id="baseImage" class="crop-state" alt="Base state">
+                <img id="stressImage" class="crop-state" alt="Stress state">
+                <img id="yieldImage" class="crop-state" alt="Yield state">
+                <img id="combinedImage" class="crop-state" alt="Combined state">
+            </div>
+            <p class="info-text">
+                If you apply more Nutrient Booster,<br>
+                your plant absorbs nutrients more<br>
+                efficiently, grows more vigorously<br>
+                and remains more resistant.
+            </p>
+        </div>
+
+        <nav class="bottom-menu">
+            <div class="menu-item">
+                <a href="../explore/explore.html">
+                    <img src="../icons/book.png" alt="Explore" class="menu-icon">
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="../alert/alert.html">
+                    <img src="../icons/alarm.png" alt="Alerts" class="menu-icon">
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="../profile/profile.html">
+                    <img src="../icons/user.png" alt="Profile" class="menu-icon">
+                </a>
+            </div>
+        </nav>
+    </div>
+    <script src="explore_products.js"></script>
+</body>
+</html> 

@@ -1,0 +1,143 @@
+:root {
+    --primary-color: rgb(182, 235, 129);
+    --text-color: #000000;
+    --button-color: rgb(38, 70, 0);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 20px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-section img {
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.crop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.crop-icon {
+    width: 150px; /* Größe bleibt gleich */
+    height: 150px;
+    border: 3px solid black; /* Behalte den Rand */
+    border-radius: 20px; /* Erhöhe diesen Wert für rundere Ecken */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+}
+
+
+.crop-icon img {
+    width: 90%; /* Bild innerhalb des Icons vergrößern */
+    height: 90%;
+    object-fit: contain;
+}
+
+/* Spezielle Anpassung für "Wheat" (falls es extra groß sein soll) */
+.crop-icon img[alt="Wheat"] {
+    width: 105%;
+    height: 105%;
+    margin-top: 16px;
+}
+
+.crop-item span {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0; /* Mehr Platz für das Menü */
+
+}
+
+.menu-item {
+    width: 70px; /* Noch größere Icons */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.menu-item img {
+    width: 120%; /* Bilder noch größer */
+    height: 120%;
+    object-fit: contain;
+    filter: brightness(0) invert(0);
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item img.active {
+    opacity: 1;
+    transform: scale(1.2); /* Aktives Icon noch deutlicher */
+}
+
+.menu-item:hover img {
+    opacity: 1;
+    transform: scale(1.3); /* Stärkerer Zoom beim Hover */
+}

@@ -2,28 +2,27 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Animation des großen 'R'</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        canvas {
-            background-color: #fff;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Syngenta</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="welcome.css">
+    
+    <!-- Google Fonts Einbindung -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+
 </head>
-<body>
-    <div class="container">
-        <canvas id="canvas" width="1050" height="700"></canvas>
+<body class="welcome-page">
+    <div class="pattern-background"></div>
+    <div class="welcome-container">
+        <div class="welcome-content">
+            <div class="welcome-text">Welcome to</div>
+            <div class="logo">
+                <img src="icons/Biologicals_signature_WHT_RGB_229-11820.png" alt="Syngenta">
+            </div>
+        </div>
+        <a href="create-account/create-account.html" class="create-account-btn">Create an Account</a>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>

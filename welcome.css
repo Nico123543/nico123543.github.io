@@ -1,0 +1,71 @@
+/* Welcome page specific styles */
+body.welcome-page {
+    background-color: rgb(38, 70, 0);
+}
+
+.pattern-background {
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    right: -5%;
+    bottom: -5%;
+    background-image: url('img/Flower-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transform: scale(1.1);
+}
+
+.welcome-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: auto 0; /* This centers the content vertically */
+}
+
+.welcome-text {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.logo {
+    margin: 0;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.create-account-btn {
+    background-color: white;
+    color: rgb(38, 70, 0);
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.create-account-btn:active {
+    transform: scale(0.98);
+} 

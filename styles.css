@@ -1,0 +1,96 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+/* Logo styles */
+.logo {
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+/* Main app styles */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+/* Main content area */
+main {
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 80px; /* Space for bottom nav */
+    background-color: white;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.8rem;
+    padding: 8px;
+    transition: color 0.3s ease;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: #007AFF;
+}
+
+/* Page specific styles */
+.page {
+    display: none;
+    background-color: white;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-item span {
+        font-size: 0.7rem;
+    }
+    
+    .nav-item i {
+        font-size: 1.3rem;
+    }
+} 

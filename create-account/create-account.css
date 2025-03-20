@@ -1,0 +1,213 @@
+:root {
+    --syngenta-green: rgb(182, 235, 129);
+    --syngenta-dark-green: rgb(38, 70, 0);
+}
+
+.create-account-page {
+    background-color: #ffffff;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.profile-section {
+    background-color: var(--syngenta-green);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 5px;
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    border: none;
+    background: transparent;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.profile-name:focus {
+    outline: none;
+    border-bottom: 1px solid #333;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.plant-item {
+    background-color: var(--syngenta-green);
+    border-radius: 0;
+    padding: 12px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.plant-item:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.plant-item:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.plant-item:hover {
+    background-color: rgb(164, 211, 116);
+}
+
+.plant-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.plant-item:hover img {
+    transform: scale(1.5);
+}
+
+.plant-item.selected {
+    border-color: black;
+}
+
+.location-section {
+    margin-bottom: 30px;
+}
+
+.location-search {
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.location-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background: white;
+    text-align: left;
+    width: 100%;
+    padding: 10px 15px;
+}
+
+.location-name:focus {
+    outline: none;
+    border-color: var(--syngenta-dark-green);
+}
+
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+#map {
+    height: 200px;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.address {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.address img {
+    width: 24px;
+    height: 24px;
+}
+
+.location-text {
+    font-size: 16px;
+    color: #333;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.finish-button {
+    background-color: var(--syngenta-dark-green);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.finish-button:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.finish-button:active {
+    transform: scale(0.98);
+} 
