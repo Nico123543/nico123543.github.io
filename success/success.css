@@ -204,4 +204,72 @@ main {
 
 .finish-button:active {
     transform: translateY(1px);
-} 
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 250px;
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    background: #222; /* Darker for contrast */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 80px;
+    position: relative;
+}
+
+.bar {
+    width: 40px;
+    border-radius: 5px;
+    transition: height 1.2s ease-out;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    border: 1px solid #aaa; /* Thin border for better definition */
+    background: #444; /* Slightly lighter background for contrast */
+}
+
+.bar-segment {
+    width: 100%;
+    transition: height 1s ease-in-out;
+}
+
+.value {
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.label {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Caption Styling */
+.caption {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+    color: #aaa;
+}
+
+/* Cleaner background */
+body {
+    background: #181818;
+    color: white;
+}
+
