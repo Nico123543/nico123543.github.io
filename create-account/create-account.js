@@ -7,7 +7,7 @@ let selectedLocation = {
 
 function toggleSelection(element) {
     element.classList.toggle('selected');
-    validateForm(); // Check validation after toggling selection
+    validateForm();
 }
 
 function updateAddressDisplay(lat, lng) {
@@ -29,9 +29,8 @@ function validateForm() {
     const selectedPlants = document.querySelectorAll('.plant-item.selected');
     const finishBtn = document.querySelector('.finish-button');
 
-    if (!finishBtn) return; // Guard clause if button not found
+    if (!finishBtn) return;
 
-    // Check if name is not empty and at least one plant is selected
     const isValid = nameInput.value.trim() !== '' && selectedPlants.length > 0;
 
     finishBtn.style.opacity = isValid ? '1' : '0.5';
@@ -47,14 +46,9 @@ function searchLocation(searchText) {
                 const lat = parseFloat(location.lat);
                 const lng = parseFloat(location.lon);
 
-                // Update map and marker
                 map.setView([lat, lng], 13);
                 marker.setLatLng([lat, lng]);
-
-                // Update selected location
                 selectedLocation = { lat, lng };
-
-                // Update address display
                 updateAddressDisplay(lat, lng);
             }
         })
@@ -65,7 +59,7 @@ function searchLocation(searchText) {
 
 async function createUser() {
     try {
-        // Get user data from localStorage
+        console.log("createUser called");
         const userData = JSON.parse(localStorage.getItem('userData'));
 
         if (!userData) {
@@ -73,7 +67,6 @@ async function createUser() {
             return;
         }
 
-        // Prepare the request body according to the API specification
         const requestBody = {
             name: userData.name,
             longitude: userData.location.lng,
@@ -81,7 +74,6 @@ async function createUser() {
             crops: userData.selectedPlants
         };
 
-        // Make the API call
         const response = await fetch('http://70.34.210.155:3490/users/create', {
             method: 'POST',
             headers: {
@@ -97,9 +89,8 @@ async function createUser() {
 
         const result = await response.json();
         console.log('User created successfully:', result);
-
-        // Mark that the user has been created
         localStorage.setItem('userCreated', 'true');
+        console.log("createUser finished");
 
     } catch (error) {
         console.error('Error creating user:', error);
@@ -107,19 +98,16 @@ async function createUser() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize map
     map = L.map('map').setView([19.0760, 72.8777], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Add initial marker
     marker = L.marker([19.0760, 72.8777], { draggable: true }).addTo(map);
 
-    // Add search functionality
     const searchInput = document.querySelector('.location-name');
-    searchInput.value = ''; // Clear the initial value
+    searchInput.value = '';
 
     searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
@@ -130,81 +118,59 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle map clicks
     map.on('click', function(e) {
         const lat = e.latlng.lat;
         const lng = e.latlng.lng;
 
-        // Update marker position
         marker.setLatLng([lat, lng]);
-
-        // Update selected location
-        selectedLocation = {
-            lat: lat,
-            lng: lng
-        };
-
-        // Update coordinates display
+        selectedLocation = { lat, lng };
         updateAddressDisplay(lat, lng);
     });
 
-    // Handle marker drag
     marker.on('dragend', function() {
         const position = marker.getLatLng();
         selectedLocation = {
             lat: position.lat,
             lng: position.lng
         };
-
         updateAddressDisplay(position.lat, position.lng);
     });
 
-    // Initialize coordinates display
     updateAddressDisplay(19.0760, 72.8777);
 
-    // Add input event listener for name field
     const nameInput = document.querySelector('.profile-name');
     nameInput.addEventListener('input', validateForm);
 
-    // Handle finish button click
     const finishBtn = document.querySelector('.finish-button');
 
     if (finishBtn) {
-        finishBtn.addEventListener('click', async function() {
-            // Get the user's name
-            const name = document.querySelector('.profile-name').value;
+        finishBtn.addEventListener('click', async function(event) {
+            event.preventDefault();
 
-            // Get selected plants
+            const name = document.querySelector('.profile-name').value;
             const selectedPlants = [];
             document.querySelectorAll('.plant-item.selected img').forEach(img => {
                 selectedPlants.push(img.alt);
             });
 
-            // Create data object with location coordinates
             const userData = {
                 name: name,
                 selectedPlants: selectedPlants,
                 location: selectedLocation
             };
 
-            // Clear localStorage before storing new data
             localStorage.clear();
-
-            // Store in localStorage
             localStorage.setItem('userData', JSON.stringify(userData));
             localStorage.setItem('userCreated', 'false');
 
-            // Create User in API
-            await createUser();
+            await createUser().catch(error => {
+                console.error("createUser error:", error);
+            });
 
-            // Log to console
             console.log('Stored User Data:', userData);
-
-            // Redirect to the alert page
             window.location.href = '../alert/alert.html';
         });
     }
 
-    // Initial validation
     validateForm();
 });
