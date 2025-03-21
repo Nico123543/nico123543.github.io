@@ -167,7 +167,7 @@ async function displayCropCard() {
         const yieldIncrease = await pillResponse.json(); // Assuming the API returns a number directly
 
         // Parse the number into a string and format it as needed
-        pill.textContent = `Yield Increase: ${yieldIncrease}%`; // Example: "Yield Increase: 15%"
+        pill.textContent = `Expected yield Increase: ${yieldIncrease}%`; // Example: "Yield Increase: 15%"
 
     } catch (error) {
         console.error('Error fetching yield increase percentage:', error);
