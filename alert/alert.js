@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayCropCards();
 
     // Create user
-    createUser();
+    //createUser();
 });
 
 // Function to update crop card content
