@@ -17,7 +17,9 @@ body {
     min-height: 100vh;
     overflow-y: auto;
 }
-
+main {
+    margin-bottom: 71px;
+}
 .container {
     max-width: 600px;
     margin: 0 auto;

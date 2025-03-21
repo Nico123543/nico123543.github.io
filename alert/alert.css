@@ -7,7 +7,9 @@
     --button-color: #4CAF50;
     
 }
-
+main {
+    margin-bottom: 71px;
+}
 * {
     margin: 0;
     padding: 0;
