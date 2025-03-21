@@ -233,10 +233,10 @@ async function fetchCropData() {
 async function createUser() {
     try {
         // Check if user was already created
-        if (localStorage.getItem('userCreated') === 'true') {
-            console.log('User was already created, skipping API call');
-            return;
-        }
+        //if (localStorage.getItem('userCreated') === 'true') {
+          //  console.log('User was already created, skipping API call');
+           // return;
+        //}
 
         // Get user data from localStorage
         const userData = JSON.parse(localStorage.getItem('userData'));

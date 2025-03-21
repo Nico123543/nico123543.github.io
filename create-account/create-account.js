@@ -144,11 +144,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 location: selectedLocation
             };
             
+            // Clear localStorage before storing new data
+            localStorage.clear();
+            
             // Store in localStorage
             localStorage.setItem('userData', JSON.stringify(userData));
+            localStorage.setItem('userCreated', 'false');
             
             // Log to console
             console.log('Stored User Data:', userData);
+            
+            // Redirect to the alert page
+            window.location.href = '../alert/alert.html';
         });
     }
 
