@@ -94,11 +94,11 @@ function updateStatusIcons(cardIndex, showCheck, showCross) {
 function createCropCard(cropData, index) {
     const card = document.createElement('div');
     card.className = 'crop-card';
-    
+
     // Set background color based on index
     const cardColors = ['var(--card-color-1)', 'var(--card-color-2)', 'var(--card-color-3)'];
     card.style.backgroundColor = cardColors[index % cardColors.length];
-    
+
     card.innerHTML = `
         <div class="crop-icon">
             <img src="${cropData.icon}" alt="${cropData.name}">
@@ -107,8 +107,8 @@ function createCropCard(cropData, index) {
             <div class="crop-header">
                 <span>${cropData.measure}</span>
                 <div class="status-icons">
-                    <span class="check">✓</span>
-                    <span class="cross">✕</span>
+                    <span class="check" data-crop-name="${cropData.name}" data-measure="${cropData.measure}">✓</span>
+                    <span class="cross" data-crop-name="${cropData.name}" data-measure="${cropData.measure}">✕</span>
                 </div>
             </div>
             <div class="treatments">
@@ -119,13 +119,15 @@ function createCropCard(cropData, index) {
     `;
 
     // Add click handler to navigate to crop_detail
-    card.addEventListener('click', () => {
-        // Store the crop data in sessionStorage
-        sessionStorage.setItem('selectedCrop', JSON.stringify(cropData));
-        // Navigate to crop_detail page
-        window.location.href = '../crop_detail/crop_detail.html';
+    card.addEventListener('click', (event) => {
+        if (!event.target.classList.contains('check') && !event.target.classList.contains('cross')) {
+            // Store the crop data in sessionStorage
+            sessionStorage.setItem('selectedCrop', JSON.stringify(cropData));
+            // Navigate to crop_detail page
+            window.location.href = '../crop_detail/crop_detail.html';
+        }
     });
-    
+
     return card;
 }
 
@@ -133,14 +135,66 @@ function createCropCard(cropData, index) {
 function addStatusIconListeners() {
     const statusIcons = document.querySelectorAll('.status-icons span');
     statusIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
+        icon.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent card click event from firing
+
             const parent = this.parentElement;
             parent.querySelectorAll('span').forEach(span => {
                 span.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
             });
             this.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+
+            const cropName = this.dataset.cropName;
+            const measure = this.dataset.measure;
+            const treatments = this.closest('.crop-card').querySelector('.treatments p').textContent.split(' | ');
+            const issue = measure;
+            const biological = treatments[0];
+
+            if (this.classList.contains('check')) {
+                handleCheck(cropName, biological, issue, this.closest('.crop-card'));
+            } else if (this.classList.contains('cross')) {
+                handleCross(this.closest('.crop-card'));
+            }
         });
     });
+}
+
+async function handleCheck(cropName, biological, issue, card) {
+    try {
+        const response = await fetch('http://70.34.210.155:3490/biological/apply', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                crop: cropName.toLowerCase().replace(/ /g, '_'),
+                issue: issue.toLowerCase().replace(/ /g, '_'),
+                biological: biological.toLowerCase().replace(/ /g, '_')
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to resolve alert');
+        }
+
+        // Remove status icons and indicate resolved
+        const statusIcons = card.querySelector('.status-icons');
+        statusIcons.remove();
+
+        const cropHeader = card.querySelector('.crop-header');
+        const resolvedSpan = document.createElement('span');
+        resolvedSpan.textContent = 'Resolved';
+        resolvedSpan.style.color = 'green';
+        cropHeader.appendChild(resolvedSpan);
+
+    } catch (error) {
+        console.error('Error resolving alert:', error);
+        alert('Failed to resolve alert. Please try again.');
+    }
+}
+
+function handleCross(card) {
+    card.remove();
 }
 
 // Function to display crop cards
